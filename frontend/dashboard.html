@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="dashboard.html" class="logo">TaskFlow</a>
+                <div class="user-menu">
+                    <span class="user-info">Welcome, <span id="userName">User</span></span>
+                    <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">My Tasks</h1>
+                <p class="dashboard-subtitle">Manage your daily tasks and stay productive</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalTasks">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingTasks">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completedTasks">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completionRate">0%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+
+            <!-- Task Controls -->
+            <div class="task-controls">
+                <div class="controls-row">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search tasks...">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="title">By Title</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="toggleTaskForm()">Add Task</button>
+                </div>
+            </div>
+
+            <!-- Add Task Form -->
+            <div id="taskForm" class="task-form hidden">
+                <h3 style="margin-bottom: 16px; font-size: 18px;">Add New Task</h3>
+                <form id="addTaskForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="taskTitle">Task Title</label>
+                            <input type="text" id="taskTitle" class="form-input" placeholder="Enter task title" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="taskDescription">Description</label>
+                        <textarea id="taskDescription" class="form-textarea" placeholder="Enter task description (optional)"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button type="submit" class="btn btn-primary">Add Task</button>
+                        <button type="button" class="btn btn-secondary" onclick="toggleTaskForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Task List -->
+            <div class="task-list" id="taskList">
+                <!-- Empty State (shown when no tasks) -->
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-state-icon">📝</div>
+                    <h3 class="empty-state-title">No tasks yet</h3>
+                    <p class="empty-state-text">Create your first task to get started with your productivity journey.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
